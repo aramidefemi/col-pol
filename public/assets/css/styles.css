@@ -17,6 +17,9 @@
 .text-primary {
 	color: #236f99 !important;
 }
+.clickable  {
+	cursor: pointer;
+}
 
 /* Side bar CSS */
 

@@ -1,7 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import UserSidebar from '../templates/user-sidebar';
 
 const SchoolSetup = () => {
+	const history = useHistory();
+
+	const handleClick = (to) => {
+		history.push(to);
+	};
 	return (
 		<div className='body-wrapper'>
 			<UserSidebar />
@@ -29,25 +35,25 @@ const SchoolSetup = () => {
 						<div className='col-md-10 ms-auto me-auto'>
 							<div className='row mt-4'>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div onClick={()=>handleClick('/application-setup')} className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/calendar.svg' className='icon-size-lg' />
 										<p>Academic Sessions</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div onClick={()=>handleClick('/school-setup')} className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/house-black-silhouette-without-door.svg' className='icon-size-lg' />
 										<p>Campuses</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/book-set.svg' className='icon-size-lg' />
 										<p>Courses</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/file-xlg.svg' className='icon-size-lg' />
 										<p>Course Registration</p>
 									</div>
@@ -55,25 +61,25 @@ const SchoolSetup = () => {
 							</div>
 							<div className='row mt-4'>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/users.svg' className='icon-size-lg' />
 										<p>Course Advisors</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/pantheon-of-rome.svg' className='icon-size-lg' />
 										<p>Departments</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/department.svg' className='icon-size-lg' />
 										<p>Faculties</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/bar-chart.svg' className='icon-size-lg' />
 										<p>Levels</p>
 									</div>
@@ -81,25 +87,25 @@ const SchoolSetup = () => {
 							</div>
 							<div className='row mt-4'>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/book-of-black-cover-closed.svg' className='icon-size-lg' />
 										<p>Program of Study</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/reading-book.svg' className='icon-size-lg' />
 										<p>Students</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/school-building.svg' className='icon-size-lg' />
 										<p>School Programs</p>
 									</div>
 								</div>
 								<div className='col-md-3'>
-									<div className='border rounded bg-light-grey text-center p-3'>
+									<div className='border rounded clickable bg-light-grey text-center p-3'>
 										<img src='assets/icons/school-calendar.svg' className='icon-size-lg' />
 										<p>Semester</p>
 									</div>

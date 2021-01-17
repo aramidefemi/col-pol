@@ -1,6 +1,11 @@
 import React from 'react';
-
+import { useHistory } from 'react-router-dom';
 const UserSidebar = () => {
+	const history = useHistory();
+
+	const handleClick = (to) => {
+		history.push(to);
+	};
 	return (
 		<div id='side-nav'>
 			<div className='sidebar-header'>
@@ -34,8 +39,8 @@ const UserSidebar = () => {
 			<h6 className='text-primary ms-4 mt-5'>Setup</h6>
 
 			<div className='sidebar-menu mb-5'>
-				<a href='#'>
-					<div className='row pl-5 pr-5'>
+				<a href='#' onClick={()=>handleClick('/user-dashboard')} >
+					<div    className='row pl-5 pr-5'>
 						<div className='col-md-3 pt-3 ps-4'>
 							<img src='assets/icons/hat.svg' className='icon-size' />
 						</div>
