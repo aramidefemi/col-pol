@@ -1,0 +1,184 @@
+.field-icon {
+	float: right;
+	margin-right: 12px;
+	margin-top: -30px;
+	position: relative;
+	z-index: 2;
+}
+
+.primary-bg {
+	background-color: #035888;
+}
+
+.bg-light-grey {
+	background: rgba(229, 229, 229, 0.4) !important;
+}
+
+.text-primary {
+	color: #236f99 !important;
+}
+
+/* Side bar CSS */
+
+#content {
+	width: 100%;
+	min-height: 100vh;
+	transition: all 0.3s;
+}
+
+#wrapper {
+	/* margin-left: 300px; */
+	background-color: #e5e5e5;
+	width: 100%;
+	height: auto;
+	padding-bottom: 50px;
+	min-height: 100vh;
+}
+
+.body-wrapper {
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+#sidebar {
+	display: flex;
+	justify-content: center;
+	min-width: 450px;
+	max-width: 450px;
+	/* z-index: 1000; */
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	min-height: 100vh;
+	background-image: url('../assets/icons/sidebar.svg');
+	background-size: cover;
+}
+
+#sidebar.active {
+	margin-left: -450px;
+}
+
+#side-nav {
+	display: block;
+	justify-content: center;
+	min-width: 300px;
+	max-width: 300px;
+	/* position: fixed; */
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	min-height: 100vh;
+	background-color: #222d32;
+}
+
+#side-nav.active {
+	margin-left: -300px;
+}
+
+@media (max-width: 768px) {
+	#sidebar {
+		margin-left: -450px;
+	}
+	#sidebar.active {
+		margin-left: 0;
+	}
+	#side-nav {
+		margin-left: -300px;
+	}
+	#side-nav.active {
+		margin-left: 0;
+	}
+}
+
+.sidebar-header {
+	width: 100%;
+	text-align: center;
+	/* height: 120px; */
+	border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.sidebar-profile {
+	width: 100%;
+}
+
+.sidebar-profile img {
+	height: 45px;
+	width: 45px;
+	border-radius: 50%;
+}
+
+.sidebar-menu a {
+	width: 100%;
+	color: #fff;
+	text-decoration: none;
+}
+
+.sidebar-menu div.row {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.sidebar-menu div.row:hover {
+	border-left: 5px solid #0397ea;
+	background: #e5e5e5;
+	color: #222d32;
+}
+
+.sidebar-menu div.active {
+	border-left: 5px solid #0397ea;
+	background: #e5e5e5;
+	color: #222d32;
+}
+
+.sidebar-menu {
+	margin-top: 30px;
+	width: 100%;
+}
+
+.icon-size {
+	height: 25px;
+	width: 25px;
+}
+
+.icon-size-lg {
+	height: 62px;
+	width: 52px;
+}
+
+/* End of Sidebar CSS */
+
+/* CSS for sidebar dropright sub menu  */
+.drop-right ul {
+	position: relative;
+	border: 1px solid #000;
+	bottom: 23%;
+	left: 25%;
+	display: none;
+}
+
+a.drop-right:hover > ul {
+	display: block;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+a.drop-right:hover ul li {
+	background: grey;
+	border-bottom: 1px solid #000;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+ul {
+	list-style: none;
+}
+
+.upload-btn {
+	border: 1px solid #979b9d;
+	width: 80%;
+	padding: 5px 0;
+	border-radius: 5px;
+}
