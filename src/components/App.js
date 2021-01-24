@@ -1,5 +1,4 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react'; 
 import Header from './templates/header';
 import Login from './pages/login';
 import ResetPassword from './pages/reset-password';
@@ -13,7 +12,17 @@ import ChangePassword from './pages/change-password';
 import AddSchoolProgram from './pages/add-school-program';
 import ApplicationSetup from './pages/application-setup';
 import SchoolSetup from './pages/school-setup';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+  } from 'react-router-dom';
+  import { useDispatch, useSelector } from 'react-redux';
+  
+  import { OPEN_ASIDE, LOGIN } from '../redux/application/action'; 
 
+  
 class App extends React.Component {
 	render() {
 		return (
@@ -23,19 +32,33 @@ class App extends React.Component {
 					<Route path='/login' component={Login} />
 					<Route path='/reset-password' component={ResetPassword} />
 					<Route path='/reset-password-success' component={PasswordResetSuccess} />
-					<Route path='/user-dashboard' component={UserDashboard} />
-					<Route path='/update-school-info' component={UpdateSchoolInfo} />
-					<Route path='/admin-setup' component={AdminSetup} />
-					<Route path='/add-courses' component={AddCourses} />
-					<Route path='/add-school' component={AddSchool} />
-					<Route path='/change-password' component={ChangePassword} />
-					<Route path='/add-school-program' component={AddSchoolProgram} />
-					<Route path='/application-setup' component={ApplicationSetup} />
-					<Route path='/school-setup' component={SchoolSetup} />
+					<ProtectedRoute path='/user-dashboard' component={UserDashboard} />
+					<ProtectedRoute path='/update-school-info' component={UpdateSchoolInfo} />
+					<ProtectedRoute path='/admin-setup' component={AdminSetup} />
+					<ProtectedRoute path='/add-courses' component={AddCourses} />
+					<ProtectedRoute path='/add-school' component={AddSchool} />
+					<ProtectedRoute path='/change-password' component={ChangePassword} />
+					<ProtectedRoute path='/add-school-program' component={AddSchoolProgram} />
+					<ProtectedRoute path='/application-setup' component={ApplicationSetup} />
+					<ProtectedRoute path='/school-setup' component={SchoolSetup} />
 				</div>
 			</Router>
 		);
 	}
 }
 
+const ProtectedRoute = ({ path, Child }) => {
+	let { user_token } = useSelector((state) => state.app);
+	const token = window.localStorage.getItem('user_token') || null;
+	console.log('token', token);
+	if (user_token === null) {
+	  return <Redirect to="/login" />;
+	}
+	return (
+	  <Route path={path}>
+		 
+		  <Child /> 
+	  </Route>
+	);
+  };
 export default App;

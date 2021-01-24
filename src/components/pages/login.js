@@ -1,14 +1,29 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { HANDLE_CHANGE, SIGN_IN } from '../../redux/authentication/actions';
 import Header from '../templates/header';
 
+
+
 const Login = () => {
-  const history = useHistory();
+  const { user_token } = useSelector((state) => state.app);
 
   const handleClick = () => {
-    history.push('/school-setup');
+     
+    dispatch(SIGN_IN());
   };
+  const dispatch = useDispatch();
 
+  const handleChange = ({ target: { name , value}}) => {
+    const form = {};
+    form[name] = value;
+    dispatch(HANDLE_CHANGE(form));
+  };
+  if (user_token !== null) {
+    return <Redirect to="/user-dashboard" />;
+  }
+ 
   return (
     <div>
       <Header />
@@ -93,6 +108,7 @@ const Login = () => {
                       <input
                         type="text"
                         name="username"
+                        onChange={handleChange}
                         className="form-control form-control-lg bg-light border-0"
                       />
                     </div>
@@ -103,6 +119,7 @@ const Login = () => {
                       <input
                         type="password"
                         name="password"
+                        onChange={handleChange}
                         className="form-control form-control-lg bg-light border-0"
                       />
                       <span className="fa fa-eye field-icon"></span>
