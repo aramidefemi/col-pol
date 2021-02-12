@@ -1,5 +1,4 @@
-import React from 'react'; 
-import Header from './templates/header';
+import React from 'react';
 import Login from './pages/login';
 import ResetPassword from './pages/reset-password';
 import PasswordResetSuccess from './pages/password-reset-success';
@@ -12,17 +11,14 @@ import ChangePassword from './pages/change-password';
 import AddSchoolProgram from './pages/add-school-program';
 import ApplicationSetup from './pages/application-setup';
 import SchoolSetup from './pages/school-setup';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect,
-  } from 'react-router-dom';
-  import { useDispatch, useSelector } from 'react-redux';
-  
-  import { OPEN_ASIDE, LOGIN } from '../redux/application/action'; 
+import CourseRegistration from './pages/course-registration';
+import StudentDashboard from './pages/student-dashboard';
+import FormReview from './pages/form-review';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-  
+import { OPEN_ASIDE, LOGIN } from '../redux/application/action';
+
 class App extends React.Component {
 	render() {
 		return (
@@ -41,6 +37,9 @@ class App extends React.Component {
 					<ProtectedRoute path='/add-school-program' component={AddSchoolProgram} />
 					<ProtectedRoute path='/application-setup' component={ApplicationSetup} />
 					<ProtectedRoute path='/school-setup' component={SchoolSetup} />
+					<ProtectedRoute path='/course-registration' component={CourseRegistration} />
+					<ProtectedRoute path='/student-dashboard' component={StudentDashboard} />
+					<ProtectedRoute path='/form-review' component={FormReview} />
 				</div>
 			</Router>
 		);
@@ -50,14 +49,14 @@ class App extends React.Component {
 const ProtectedRoute = ({ path, component: Child }) => {
 	let { user_token } = useSelector((state) => state.app);
 	const token = user_token || window.localStorage.getItem('user_token') || null;
-	console.log('token hood', token,  user_token || window.localStorage.getItem('user_token') || null);
+	console.log('token hood', token, user_token || window.localStorage.getItem('user_token') || null);
 	if (token === null) {
-	  return <Redirect to="/login" />;
+		return <Redirect to='/login' />;
 	}
 	return (
-	  <Route path={path}>
-		  <Child /> 
-	  </Route>
+		<Route path={path}>
+			<Child />
+		</Route>
 	);
-  };
+};
 export default App;
