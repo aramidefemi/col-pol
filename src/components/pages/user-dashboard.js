@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_SCHOOL, GET_SCHOOLS } from '../../redux/application/action';
 import Sidebar from '../templates/sidebar';
@@ -7,8 +8,10 @@ import FlatList from '../../common/FlatList';
 
 const UserDashboard = () => {
   const dispatch = useDispatch();
-  const [ state, setState ] = useState('');
-  const { schools : { list } } = useSelector((state) => state.app);
+  const [state, setState] = useState('');
+  const {
+    schools: { list },
+  } = useSelector((state) => state.app);
 
   useEffect(() => {
     dispatch(GET_SCHOOLS());
@@ -29,6 +32,19 @@ const UserDashboard = () => {
       },
     };
     dispatch(ADD_SCHOOL(payload));
+  };
+  const updateSchool = (payload) => {
+    dispatch({
+      type: 'UPDATE_SCHOOL',
+      payload,
+    });
+    return <Redirect to="/update-school-info" />;
+  };
+  const deleteSchool = (payload) => {
+    dispatch({
+      type: 'DELETE_SCHOOL',
+      payload,
+    });
   };
 
   return (
@@ -75,7 +91,6 @@ const UserDashboard = () => {
                 </div>
                 <div className="col-md-3 col-12">
                   <button
-                    
                     onClick={addSchool}
                     className="btn btn-lg btn-success px-5"
                   >
@@ -91,8 +106,17 @@ const UserDashboard = () => {
                 <div className="row mt-2 justify-content-center">
                   <h6 className="ps-4">List of School Names</h6>
                 </div>
-{console.log('props schools',list)}
-                <ShowIF Child={()=><FlatList Child={SchoolRow} data={list} />} show={list} />
+                {console.log('props schools', list)}
+                <ShowIF
+                  Child={() => (
+                    <FlatList
+                      Child={SchoolRow}
+                      data={list}
+                      props={{updateSchool, deleteSchool}}
+                    />
+                  )}
+                  show={list}
+                />
                 <ShowIF
                   Child={() => (
                     <>
@@ -120,23 +144,33 @@ const UserDashboard = () => {
   );
 };
 
-const SchoolRow = ({ attributes:  { name }}) => {
-  console.log('props',name)
+const SchoolRow = ({ attributes, id, updateSchool, deleteSchool }) => {
+
   return (
     <div className="row mt-4 justify-content-center">
       <div className="col-md-11">
         <div className="row bg-light-grey py-2 px-2 border rounded">
           <div className="col-md-7 col-6">
-            <h6 className="pt-2">{name}</h6>
+            <h6 className="pt-2">{attributes.name}</h6>
           </div>
           <div className="col-md-2 col-3 ps-0">
             <div className="d-grid gap-2">
-              <button className="btn btn-primary">Update</button>
+              <button
+                onClick={() => updateSchool({ id, attributes })}
+                className="btn btn-primary"
+              >
+                Update
+              </button>
             </div>
           </div>
           <div className="col-md-2 col-3 ps-0">
             <div className="d-grid gap-2">
-              <button className="btn btn-danger">Delete</button>
+              <button
+                onClick={() => deleteSchool({ id })}
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
             </div>
           </div>
           <div className="col-md-1 col-2">

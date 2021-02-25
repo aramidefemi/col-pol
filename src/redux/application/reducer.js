@@ -1,10 +1,10 @@
 const initialState = {
   schools: {
     selected: {},
-    list: []
+    list: [],
   },
   user_token: null,
-  user: {}
+  user: {},
 };
 
 export default function applicationReducer(
@@ -13,12 +13,17 @@ export default function applicationReducer(
 ) {
   switch (type) {
     case 'GET_SCHOOLS':
-      const schools = { ...state, schools: { list: payload,  selected: state.schools.selected } };
-      console.log('schools',schools,'payload',payload)
+      const schools = {
+        ...state,
+        schools: { list: payload, selected: state.schools.selected },
+      }; 
       return schools;
-  case 'SIGN_IN':  
-      const user = { ...state, ...payload };
-      return user;
+    case 'SELECT_SCHOOL':
+      const school = {
+        ...state,
+        schools: { list: state.schools.list, selected: payload },
+      };
+      return school;
     default:
       return state;
   }

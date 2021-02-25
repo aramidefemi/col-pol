@@ -1,10 +1,10 @@
 import React from 'react';
 
-const FlatList = ({ data, Child }) => {
+const FlatList = ({ data, Child, props }) => {
   return (
     <>
       {data.map((items, i) => (
-        <Child key={i} {...items} />
+        <Child key={i} {...items} {...props} />
       ))}
     </>
   );

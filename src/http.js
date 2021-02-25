@@ -1,37 +1,55 @@
 import axios from 'axios';
+import { errorNotification } from './redux/store';
 
-const post = async (url, body, token) => {
+async function post(url, body)  {
   try {
     const response = await axios.post(
-      'https://collegeportalapi.herokuapp.com' + url,
-      body,
-      {
-        headers: {
-          Authorization: 'Bearer ' + token, //the token is a variable which holds the token
-        },
-      }
-    );
-    return { bool: true, data: response.data };
+      'http://collegeportalapi2.herokuapp.com' + url,
+      body
+    ); 
+    return { bool: true, data: response.data};
   } catch (error) {
-    alert(error);
+    errorNotification(error);
     console.error(error);
-    return { bool: false };
+    return { bool: false }
   }
-};
-const get = async (url, token = null) => {
+}
+async function get(url)  {
   try {
-    const response = await axios.get('https://collegeportalapi.herokuapp.com' + url, {
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer ' + token, //the token is a variable which holds the token
-      },
-    });
-    return { bool: true, data: response.data };
+    const response = await axios.get(
+      'http://collegeportalapi2.herokuapp.com' + url, 
+    ); 
+    return { bool: true, data: response.data};
   } catch (error) {
-    alert(error);
+    errorNotification(error);
     console.error(error);
-    return { bool: false };
+    return { bool: false }
   }
-};
+}
+async function put(url, body)  {
+  try {
+    const response = await axios.put(
+      'http://collegeportalapi2.herokuapp.com' + url,
+      body
+    ); 
+    return { bool: true, data: response.data};
+  } catch (error) {
+    errorNotification(error);
+    console.error(error);
+    return { bool: false }
+  }
+}
+async function deleteApi(url)  {
+  try {
+    const response = await axios.delete(
+      'http://collegeportalapi2.herokuapp.com' + url, 
+    ); 
+    return { bool: true, data: response.data};
+  } catch (error) {
+    errorNotification(error);
+    console.error(error);
+    return { bool: false }
+  }
+}
 
-export { post, get };
+export { post, get, deleteApi, put  };
