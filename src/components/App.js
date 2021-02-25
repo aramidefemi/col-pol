@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './pages/login';
 import ResetPassword from './pages/reset-password';
 import PasswordResetSuccess from './pages/password-reset-success';
-import UserDashboard from './pages/user-dashboard-empty';
+import UserDashboard from './pages/user-dashboard';
 import UpdateSchoolInfo from './pages/update-school-info';
 import AdminSetup from './pages/admin-setup';
 import AddCourses from './pages/add-courses';
