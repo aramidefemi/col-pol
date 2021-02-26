@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../templates/header';
+import { Link } from 'react-router-dom';
 
 const ResetPassword = () => {
   return (
@@ -34,9 +35,9 @@ const ResetPassword = () => {
                   <span className="fa fa-eye field-icon"></span>
                 </div>
                 <div className="d-grid gap-2 p-4">
-                  <button className="btn btn-lg primary-bg text-white">
+                  <Link to='/reset-password-success' className="btn btn-lg primary-bg text-white">
                     <small>Reset</small>
-                  </button>
+                  </Link>
                 </div>
                 <p className="small text-center px-4 py-2">
                   Already have an account? Log In

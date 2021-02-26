@@ -124,7 +124,7 @@ const Sidebar = () => {
             </div>
           </div>
         </a>
-        <Link to='/form-review/course-registration'>
+        <Link to='/course-registration'>
           <div className="row pl-5 pr-5">
             <div className="col-md-3 pt-3 ps-4">
               <img
