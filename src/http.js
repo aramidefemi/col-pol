@@ -9,7 +9,7 @@ async function post(url, body)  {
     ); 
     return { bool: true, data: response.data};
   } catch (error) {
-    errorNotification(error);
+    alert(error);
     console.error(error);
     return { bool: false }
   }
@@ -21,7 +21,7 @@ async function get(url)  {
     ); 
     return { bool: true, data: response.data};
   } catch (error) {
-    errorNotification(error);
+    alert(error);
     console.error(error);
     return { bool: false }
   }
@@ -34,7 +34,7 @@ async function put(url, body)  {
     ); 
     return { bool: true, data: response.data};
   } catch (error) {
-    errorNotification(error);
+    alert(error);
     console.error(error);
     return { bool: false }
   }
@@ -46,7 +46,7 @@ async function deleteApi(url)  {
     ); 
     return { bool: true, data: response.data};
   } catch (error) {
-    errorNotification(error);
+    alert(error);
     console.error(error);
     return { bool: false }
   }

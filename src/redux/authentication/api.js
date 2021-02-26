@@ -13,7 +13,7 @@ const api = (store) => (next) => async (action)  => {
       ); 
       return { bool: true, data: response.data};
     } catch (error) {
-      errorNotification(error);
+      alert(error);
       console.error(error);
       return { bool: false }
     }
@@ -40,7 +40,7 @@ const api = (store) => (next) => async (action)  => {
         console.log(action,response.data['token'])
         return next(action) 
       }else {
-        errorNotification(response.data.errors || 'Wrong user type');
+        alert(response.data.errors || 'Wrong user type');
       }
     return
     case 'LOGIN':
