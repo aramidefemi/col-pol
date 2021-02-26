@@ -11,9 +11,8 @@ import payments from './payments/api';
 import { notification } from 'antd';
 
 export const errorNotification = (error) => {
-  notification.open({ 
-    description:
-      error,
+  notification.open({
+    description: error,
     className: 'custom-notification-class',
     style: {
       width: 600,
@@ -22,7 +21,16 @@ export const errorNotification = (error) => {
 };
 
 const initialstate = {};
-const middleware = [thunk, logger, auth,app,messages,requests,products,payments];
+const middleware = [
+  thunk,
+  logger,
+  auth,
+  app,
+  messages,
+  requests,
+  products,
+  payments,
+];
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
   ? window.__REDUX_DEVTOOLS_EXTENSION__()
   : (f) => f;

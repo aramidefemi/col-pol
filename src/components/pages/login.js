@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Spin } from 'antd';
 import { Redirect, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { HANDLE_CHANGE, SIGN_IN } from '../../redux/authentication/actions';
@@ -6,8 +7,10 @@ import Header from '../templates/header';
 
 const Login = () => {
   const { user_token } = useSelector((state) => state.app);
+  const [loading, setLoading ] = useState(false);
 
   const handleClick = () => {
+    setLoading(!loading)
     dispatch(SIGN_IN());
   };
   const dispatch = useDispatch();
@@ -95,6 +98,7 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="col-md-6">
+                <Spin spinning={loading} delay={500}>
                   <div className="card mt-4">
                     <h5 className="text-center my-4">User Login</h5>
 
@@ -134,6 +138,7 @@ const Login = () => {
                       </button>
                     </div>
                   </div>
+                  </Spin>
                 </div>
               </div>
             </div>
