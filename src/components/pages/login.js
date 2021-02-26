@@ -1,21 +1,18 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { HANDLE_CHANGE, SIGN_IN } from '../../redux/authentication/actions';
 import Header from '../templates/header';
-
-
 
 const Login = () => {
   const { user_token } = useSelector((state) => state.app);
 
   const handleClick = () => {
-     
     dispatch(SIGN_IN());
   };
   const dispatch = useDispatch();
 
-  const handleChange = ({ target: { name , value}}) => {
+  const handleChange = ({ target: { name, value } }) => {
     const form = {};
     form[name] = value;
     dispatch(HANDLE_CHANGE(form));
@@ -23,7 +20,7 @@ const Login = () => {
   if (user_token !== null) {
     return <Redirect to="/user-dashboard" />;
   }
- 
+
   return (
     <div>
       <Header />
@@ -124,7 +121,9 @@ const Login = () => {
                       />
                       <span className="fa fa-eye field-icon"></span>
                     </div>
-                    <p className="small text-end px-4">Forgot Password?</p>
+                    <Link to="/reset-password">
+                      <p className="small text-end px-4">Forgot Password?</p>
+                    </Link>
                     <div className="d-grid gap-2 p-4">
                       <button
                         type="button"

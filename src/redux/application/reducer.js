@@ -16,7 +16,7 @@ export default function applicationReducer(
       const schools = {
         ...state,
         schools: { list: payload, selected: state.schools.selected },
-      }; 
+      };
       return schools;
     case 'SELECT_SCHOOL':
       const school = {
@@ -24,6 +24,9 @@ export default function applicationReducer(
         schools: { list: state.schools.list, selected: payload },
       };
       return school;
+    case 'SIGN_IN':
+      const user = { ...state, ...payload };
+      return user;
     default:
       return state;
   }

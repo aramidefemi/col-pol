@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_SCHOOL, GET_SCHOOLS } from '../../redux/application/action';
 import Sidebar from '../templates/sidebar';
@@ -35,10 +35,9 @@ const UserDashboard = () => {
   };
   const updateSchool = (payload) => {
     dispatch({
-      type: 'UPDATE_SCHOOL',
+      type: 'SELECT_SCHOOL',
       payload,
-    });
-    return <Redirect to="/update-school-info" />;
+    }); 
   };
   const deleteSchool = (payload) => {
     dispatch({
@@ -144,7 +143,7 @@ const UserDashboard = () => {
   );
 };
 
-const SchoolRow = ({ attributes, id, updateSchool, deleteSchool }) => {
+const SchoolRow = ({ attributes, id, relationships, updateSchool, deleteSchool }) => {
 
   return (
     <div className="row mt-4 justify-content-center">
@@ -155,12 +154,12 @@ const SchoolRow = ({ attributes, id, updateSchool, deleteSchool }) => {
           </div>
           <div className="col-md-2 col-3 ps-0">
             <div className="d-grid gap-2">
-              <button
-                onClick={() => updateSchool({ id, attributes })}
+              <Link to='/update-school-info'
+                onClick={() => updateSchool({ id, attributes,relationships })}
                 className="btn btn-primary"
               >
                 Update
-              </button>
+              </Link>
             </div>
           </div>
           <div className="col-md-2 col-3 ps-0">
