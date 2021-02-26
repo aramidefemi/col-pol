@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {   Link } from 'react-router-dom';
 const Sidebar = () => {
   return (
     <div id="side-nav">
@@ -24,7 +24,7 @@ const Sidebar = () => {
             </div>
           </div>
         </a>
-        <a href="#">
+        <Link to='/change-password'>
           <div className="row pl-5 pr-5">
             <div className="col-md-3 pt-3 ps-4">
               <img
@@ -37,12 +37,12 @@ const Sidebar = () => {
               <p className=" ">Change Password</p>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
       <h6 className="text-primary ms-4 mt-5">Setup</h6>
 
       <div className="sidebar-menu mb-5">
-        <a href="#">
+        <Link to='/application-setup'>
           <div className="row pl-5 pr-5">
             <div className="col-md-3 pt-3 ps-4">
               <img alt="" src="assets/icons/hat.svg" className="icon-size" />
@@ -51,8 +51,38 @@ const Sidebar = () => {
               <p className=" ">Admission Management</p>
             </div>
           </div>
-        </a>
-        <a href="#">
+        </Link>
+        <Link to='/school-setup'>
+          <div className="row pl-5 pr-5">
+            <div className="col-md-3 pt-3 ps-4">
+              <img alt="" src="assets/icons/hat.svg" className="icon-size" />
+            </div>
+            <div className="col-md-9 pt-3 pl-0">
+              <p className=" ">School Management</p>
+            </div>
+          </div>
+        </Link>
+        <Link to='/form-review'>
+          <div className="row pl-5 pr-5">
+            <div className="col-md-3 pt-3 ps-4">
+              <img alt="" src="assets/icons/hat.svg" className="icon-size" />
+            </div>
+            <div className="col-md-9 pt-3 pl-0">
+              <p className=" ">Form Review</p>
+            </div>
+          </div>
+        </Link>
+        <Link to='/student-dashboard'>
+          <div className="row pl-5 pr-5">
+            <div className="col-md-3 pt-3 ps-4">
+              <img alt="" src="assets/icons/hat.svg" className="icon-size" />
+            </div>
+            <div className="col-md-9 pt-3 pl-0">
+              <p className=" ">Student Dashboard</p>
+            </div>
+          </div>
+        </Link>
+        <Link to='/add-courses'>
           <div className="row pl-5 pr-5">
             <div className="col-md-3 pt-3 ps-4">
               <img alt="" src="assets/icons/file.svg" className="icon-size" />
@@ -61,9 +91,9 @@ const Sidebar = () => {
               <p className=" ">Records Management</p>
             </div>
           </div>
-        </a>
+        </Link>
 
-        <a href="#">
+        <Link to='/add-school-program'>
           <div className="row pl-5 pr-5">
             <div className="col-md-3 pt-3 ps-4">
               <img
@@ -78,7 +108,7 @@ const Sidebar = () => {
               </p>
             </div>
           </div>
-        </a>
+        </Link>
 
         <a href="#">
           <div className="row pl-5 pr-5">
@@ -94,7 +124,7 @@ const Sidebar = () => {
             </div>
           </div>
         </a>
-        <a href="#">
+        <Link to='/form-review/course-registration'>
           <div className="row pl-5 pr-5">
             <div className="col-md-3 pt-3 ps-4">
               <img
@@ -107,7 +137,7 @@ const Sidebar = () => {
               <p className=" ">Course Registration</p>
             </div>
           </div>
-        </a>
+        </Link>
         <a href="#">
           <div className="row pl-5 pr-5">
             <div className="col-md-3 pt-3 ps-4">

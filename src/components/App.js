@@ -32,7 +32,7 @@ class App extends React.Component {
 					<ProtectedRoute path='/update-school-info' component={UpdateSchoolInfo} />
 					<ProtectedRoute path='/admin-setup' component={AdminSetup} />
 					<ProtectedRoute path='/add-courses' component={AddCourses} />
-					<ProtectedRoute path='/add-school' component={AddSchool} />
+					{/* <ProtectedRoute path='/add-school' component={AddSchool} /> */}
 					<ProtectedRoute path='/change-password' component={ChangePassword} />
 					<ProtectedRoute path='/add-school-program' component={AddSchoolProgram} />
 					<ProtectedRoute path='/application-setup' component={ApplicationSetup} />
