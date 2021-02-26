@@ -4,7 +4,7 @@ import { errorNotification } from './redux/store';
 async function post(url, body)  {
   try {
     const response = await axios.post(
-      'http://collegeportalapi2.herokuapp.com' + url,
+      'https://collegeportalapi2.herokuapp.com' + url,
       body
     ); 
     return { bool: true, data: response.data};
@@ -17,7 +17,7 @@ async function post(url, body)  {
 async function get(url)  {
   try {
     const response = await axios.get(
-      'http://collegeportalapi2.herokuapp.com' + url, 
+      'https://collegeportalapi2.herokuapp.com' + url, 
     ); 
     return { bool: true, data: response.data};
   } catch (error) {
@@ -29,7 +29,7 @@ async function get(url)  {
 async function put(url, body)  {
   try {
     const response = await axios.put(
-      'http://collegeportalapi2.herokuapp.com' + url,
+      'https://collegeportalapi2.herokuapp.com' + url,
       body
     ); 
     return { bool: true, data: response.data};
@@ -42,7 +42,7 @@ async function put(url, body)  {
 async function deleteApi(url)  {
   try {
     const response = await axios.delete(
-      'http://collegeportalapi2.herokuapp.com' + url, 
+      'https://collegeportalapi2.herokuapp.com' + url, 
     ); 
     return { bool: true, data: response.data};
   } catch (error) {
